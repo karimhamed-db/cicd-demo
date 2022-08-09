@@ -44,11 +44,11 @@ jobs:
 
       - name: Deploy integration test
         run: |
-          dbx deploy --jobs=cicd-sample-project-sample-integration-test
+          dbx deploy --jobs=cicd-sample-project-sample-integration-test -e dev
 
       - name: Run integration test
         run: |
-          dbx launch --job=cicd-sample-project-sample-integration-test --trace
+          dbx launch --job=cicd-sample-project-sample-integration-test --trace -e dev
 
 
 
