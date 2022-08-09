@@ -1,0 +1,41 @@
+jobs: &job-list
+
+  - name: cicd-sample-project-sample
+    new_cluster:
+      spark_version: 7.3.x-cpu-ml-scala2.12
+      node_type_id: Standard_DS3_v2
+      num_workers: 2
+    libraries: []
+    email_notifications:
+      on_start: []
+      on_success: []
+      on_failure: []
+    max_retries: 0
+    spark_python_task:
+      python_file: file://cicd_sample_project/jobs/sample/entrypoint.py
+      parameters:
+      - "--conf-file"
+      - file://conf/test/sample.json
+
+  - name: cicd-sample-project-sample-integration-test
+    new_cluster:
+      spark_version: 7.3.x-cpu-ml-scala2.12
+      node_type_id: Standard_DS3_v2
+      num_workers: 1
+    libraries: []
+    email_notifications:
+      on_start: []
+      on_success: []
+      on_failure: []
+    max_retries: 0
+    spark_python_task:
+      python_file: file://tests/integration/sample_test.py
+
+
+environments:
+    dev:
+        jobs: *job-list
+    staging:
+        jobs: *job-list
+    prod:
+        jobs: *job-list

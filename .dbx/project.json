@@ -2,8 +2,18 @@
     "environments": {
         "dev": {
             "profile": "dev",
-            "workspace_dir": "/Shared/dbx/kh/projects/cicd-demo",
-            "artifact_location": "dbfs:/dbx/kh/cicd-demo"
+            "workspace_dir": "/Shared/dbx/kh/dev/projects/cicd-demo",
+            "artifact_location": "dbfs:/dbx/kh/dev/cicd-demo"
+        },
+        "staging": {
+            "profile": "staging",
+            "workspace_dir": "/Shared/dbx/kh/staging/projects/cicd-demo",
+            "artifact_location": "dbfs:/dbx/kh/staging/cicd-demo"
+        },
+        "prod": {
+            "profile": "prod",
+            "workspace_dir": "/Shared/dbx/kh/prod/projects/cicd-demo",
+            "artifact_location": "dbfs:/dbx/kh/prod/cicd-demo"
         }
     }
 }
