@@ -38,3 +38,6 @@ jobs:
       - name: Deploy the job
         run: |
           dbx deploy --jobs=cicd-sample-project-sample --environment prod
+      - name: Run the job
+        run: |
+          dbx launch --job=cicd-sample-project-sample --trace --environment prod --existing-runs wait
