@@ -1,0 +1,9 @@
+{
+    "environments": {
+        "dev": {
+            "profile": "dev",
+            "workspace_dir": "/Shared/dbx/kh/projects/cicd-demo",
+            "artifact_location": "dbfs:/dbx/kh/cicd-demo"
+        }
+    }
+}

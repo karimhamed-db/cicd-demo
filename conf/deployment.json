@@ -1,5 +1,5 @@
 {
-    "default": {
+    "dev": {
         "jobs": [
             {
                 "name": "cicd-sample-project-sample",
@@ -16,7 +16,7 @@
                 },
                 "max_retries": 0,
                 "spark_python_task": {
-                    "python_file": "cicd_sample_project/jobs/sample/entrypoint.py",
+                    "python_file": "file://cicd_sample_project/jobs/sample/entrypoint.py",
                     "parameters": [
                         "--conf-file",
                         "conf/test/sample.json"
@@ -38,7 +38,7 @@
                 },
                 "max_retries": 0,
                 "spark_python_task": {
-                    "python_file": "tests/integration/sample_test.py"
+                    "python_file": "file://tests/integration/sample_test.py"
                 }
             }
         ]
