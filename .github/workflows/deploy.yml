@@ -1,0 +1,38 @@
+name: Release pipeline
+
+on:
+  push:
+    branches:
+      - 'master'
+
+
+jobs:
+  deploy-pipeline:
+    environment: staging
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+
+    env:
+      DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+      DATABRICKS_TOKEN:  ${{ secrets.DATABRICKS_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.8
+
+      - name: Install pip
+        run: |
+          python -m pip install --upgrade pip
+
+      - name: Install dependencies and project
+        run: |
+          pip install -r requirements.txt
+
+      - name: Deploy the job
+        run: |
+          dbx deploy --jobs=cicd-sample-project-sample --environment staging
