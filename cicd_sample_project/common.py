@@ -28,7 +28,6 @@ class Job(ABC):
             self.conf = self._provide_config()
         self.init_adapter()
         self._log_conf()
-        print("Hello world!")
 
     @staticmethod
     def _prepare_spark(spark) -> SparkSession:

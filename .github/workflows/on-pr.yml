@@ -1,14 +1,17 @@
-name: Test pipeline
+name: Validate pipeline
 
 on:
+  pull_request:
+    branches:    
+      - 'feature/**'
   push:
     branches:
-      - '**'
+      - 'feature/**'
     tags-ignore:
       - 'v*' # this tag type is used for release pipelines
 
 jobs:
-  test-pipeline:
+  validate-pipeline:
 
     runs-on: ubuntu-latest
     strategy:
@@ -19,12 +22,12 @@ jobs:
       DATABRICKS_TOKEN:  ${{ secrets.DATABRICKS_TOKEN }}
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
-          python-version: 3.7.5
+          python-version: 3.8.9
 
       - name: Install pip
         run: |
@@ -33,20 +36,19 @@ jobs:
       - name: Install dependencies and project in dev mode
         run: |
           pip install -r unit-requirements.txt
-          pip install -e .
 
       - name: Run unit tests
         run: |
           echo "Launching unit tests"
-          pytest tests/unit
+          pytest tests/unit --cov
 
       - name: Deploy integration test
         run: |
-          dbx deploy --jobs=cicd-sample-project-sample-integration-test --files-only
+          dbx deploy --jobs=cicd-sample-project-sample-integration-test
 
       - name: Run integration test
         run: |
-          dbx launch --job=cicd-sample-project-sample-integration-test --as-run-submit --trace
+          dbx launch --job=cicd-sample-project-sample-integration-test --trace
 
 
 
