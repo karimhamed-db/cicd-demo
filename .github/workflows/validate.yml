@@ -45,7 +45,7 @@ jobs:
 
       - name: Run integration test
         run: |
-          dbx launch --job=cicd-sample-project-sample-integration-test --trace --environment dev
+          dbx launch --job=cicd-sample-project-sample-integration-test --trace --environment dev --existing-runs cancel
 
 
 
