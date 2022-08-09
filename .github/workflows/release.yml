@@ -13,7 +13,7 @@ jobs:
     environment: prod
     runs-on: ubuntu-latest
     strategy:
-      max-parallel: 4
+      max-parallel: 1
 
     env:
       DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
