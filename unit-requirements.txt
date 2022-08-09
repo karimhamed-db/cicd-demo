@@ -1,5 +1,6 @@
 setuptools
 wheel
+pandas==1.4.3
 pyspark==3.0.0
 pytest
 pytest-cov
