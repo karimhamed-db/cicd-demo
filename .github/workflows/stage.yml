@@ -1,4 +1,4 @@
-name: Release pipeline
+name: Stage pipeline
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 
 jobs:
-  deploy-pipeline:
+  stage-pipeline:
     environment: staging
     runs-on: ubuntu-latest
     strategy:

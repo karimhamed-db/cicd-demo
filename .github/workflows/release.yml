@@ -2,14 +2,12 @@ name: Release pipeline
 
 on:
   push:
-    branches:
-      - 'master'
     tags:        
-      - 'v*'
+      - 'v[0-9]+.[0-9]+.[0-9]+'
 
 
 jobs:
-  deploy-pipeline:
+  release-pipeline:
     environment: prod
     runs-on: ubuntu-latest
     strategy:
